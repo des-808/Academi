@@ -128,10 +128,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="classGraduate.cpp" />
+    <ClCompile Include="classHuman.cpp" />
+    <ClCompile Include="classStudent.cpp" />
+    <ClCompile Include="classTeacher.cpp" />
     <ClCompile Include="inheritanceMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="addlib.h" />
+    <ClInclude Include="classGraduate.h" />
+    <ClInclude Include="classHuman.h" />
+    <ClInclude Include="classStudent.h" />
+    <ClInclude Include="classTeacher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
