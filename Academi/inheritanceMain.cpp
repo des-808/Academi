@@ -1,18 +1,11 @@
 ﻿#include "addlib.h"
 
-#include "classHuman.cpp"
-#include "classStudent.cpp"
-#include "classTeacher.cpp"
-#include "classGraduate.cpp"
-
-
-
-
-
-
+#include "classHuman.h"
+#include "classStudent.h"
+#include "classTeacher.h"
+#include "classGraduate.h"
 
 //#define INHERITANCE_CHECK
-
 
 int main() {
 	setlocale(LC_ALL, "Russian");
