@@ -34,6 +34,11 @@ public:
 
 };
 
+std::ostream& operator<<(std::ostream& os, const Human& obj) {
+
+	return os << obj.get_last_name() << " " << obj.get_first_name() << " " << obj.get_age() << " ";
+}
+
 #define  STUDENT_PARAMETRES const std::string& speciality, const std::string& group, unsigned int year, float rating, float attendance
 #define  STUDENT_ARGUMENTS  speciality, group, year, rating, attendance
 
