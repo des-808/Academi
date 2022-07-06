@@ -154,15 +154,22 @@ int main() {
 		new Graduate("Shrader", "Hank", 40, "criminalist", "ps_220", 12, 13, 14,"abrakadabra"),
 		new Student("fedya", "fortochkin", 25,"xzs", "pps", 12,140, 99)
 	};
-	for (int i = 0; i < sizeof(group)/sizeof(group[0]); i++) {
+	/*for (int i = 0; i < sizeof(group)/sizeof(group[0]); i++) {
 
 		group[i]->info();
 	}
 	for (int i = 0; i < sizeof(group)/sizeof(group[0]); i++) {
 
 		delete group[i];
+	}*/
+	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
+		cout << typeid(*group[i]).name() << endl;
+		cout << *group[i] << "  ";
+		
+
+
+		//cout<<*group[i]<<endl;
 	}
-	
 
 
 }
