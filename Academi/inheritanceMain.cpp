@@ -31,8 +31,8 @@ public:
 		
 		cout << last_name << " " << first_name <<" "<< age <<" Year's  "<< endl;
 	}
-	virtual std::ostream& print(std::ostream& os)const {
-		return os << last_name << " " << first_name << " " << age << " ";
+	virtual std::ostream& print(std::ostream& os = cout)const {
+		return os << last_name << " " << first_name << " " << age;
 	}
 
 
@@ -84,7 +84,7 @@ public:
 	}
 
 	std::ostream& print(std::ostream& os)const {
-		return Human::print(os) << " " << speciality << " " << group << " " << year << " " << rating << " " << attendance << endl;
+		return Human::print(os) << " " << speciality << " " << group << " " << year << " " << rating << " " << attendance;
 	}
 
 };
@@ -116,7 +116,7 @@ public:
 	}
 
 	std::ostream& print(std::ostream& os)const {
-		return Human::print(os) << " " << specialitty << " " << experience;
+		return Human::print(os) << " " << speciality << " " << experience;
 	}
 };
 
@@ -187,9 +187,13 @@ int main() {
 	//	//cout<<*group[i]<<endl;
 	//}
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
-			cout << typeid(*group[i]).name() << endl;
-			cout << *group[i] << "  ";
-			cout<<*group[i]<<endl;
+			//cout << typeid(*group[i]).name() << endl;
+			//cout << *group[i] << "  ";
+
+			group[i]->print();
+
+			cout << endl << "__________________________________________________________________" << endl;
+			//cout<<*group[i]<<endl;
 
 		}
 
