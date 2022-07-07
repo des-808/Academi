@@ -31,12 +31,17 @@ public:
 		
 		cout << last_name << " " << first_name <<" "<< age <<" Year's  "<< endl;
 	}
+	virtual std::ostream& print(std::ostream& os)const {
+		return os << last_name << " " << first_name << " " << age << " ";
+	}
+
 
 };
 
 std::ostream& operator<<(std::ostream& os, const Human& obj) {
 
-	return os << obj.get_last_name() << " " << obj.get_first_name() << " " << obj.get_age() << " ";
+	//return os << obj.get_last_name() << " " << obj.get_first_name() << " " << obj.get_age() << " ";
+	return obj.print(os);
 }
 
 #define  STUDENT_PARAMETRES const std::string& speciality, const std::string& group, unsigned int year, float rating, float attendance
@@ -78,6 +83,10 @@ public:
 		cout<< speciality << " " << group << " " << year << " " << rating << " " << attendance  << endl;
 	}
 
+	std::ostream& print(std::ostream& os)const {
+		return Human::print(os) << " " << speciality << " " << group << " " << year << " " << rating << " " << attendance << endl;
+	}
+
 };
 
 #define  TEACHER_PARAMETRES const std::string& speciality,  unsigned int experience
@@ -105,7 +114,13 @@ public:
 		Human::info();
 		cout << speciality << " " << experience << endl;
 	}
+
+	std::ostream& print(std::ostream& os)const {
+		return Human::print(os) << " " << specialitty << " " << experience;
+	}
 };
+
+
 
 class Graduate :public Student {
 	std::string subject;
@@ -124,6 +139,10 @@ public:
 	void  info()const {
 		Student::info();
 		cout << subject << " " << endl;
+	}
+
+	std::ostream& print(std::ostream& os)const {
+		return Student::print(os) << " " << subject;
 	}
 
 };
@@ -162,14 +181,16 @@ int main() {
 
 		delete group[i];
 	}*/
+	//for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
+	//	cout << typeid(*group[i]).name() << endl;
+	//	cout << *group[i] << "  ";
+	//	//cout<<*group[i]<<endl;
+	//}
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
-		cout << typeid(*group[i]).name() << endl;
-		cout << *group[i] << "  ";
-		
+			cout << typeid(*group[i]).name() << endl;
+			cout << *group[i] << "  ";
+			cout<<*group[i]<<endl;
 
-
-		//cout<<*group[i]<<endl;
-	}
-
+		}
 
 }
