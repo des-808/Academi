@@ -35,6 +35,7 @@ using std::make_pair;
 
 //#define ZADACHA_1 
 #define ZADACHA_2 
+//#define INTERSNAYA_SHTUKA 
 
 int main() {
 	setlocale(LC_ALL, "");
@@ -118,11 +119,12 @@ int main() {
 			int i = 1;
 			while (!rfile.eof()) {
 				rfile >> right >> left;
+				replace(left.begin(),left.end(),'-', ':');
 				wfile << "host 201-" << i << endl;
 				wfile << "{" << endl;
 				wfile << "\t" << "hardware ethernet" << "\t" << left << ";" << endl;
-				wfile << "\t" << "fixed-addresst" << "\t" << "\t" << right << ";" << endl;
-				wfile << "}" << endl;
+				wfile << "\t" << "fixed-address" << "\t" << "\t" << right << ";" << endl;
+				wfile << "}" << endl << endl;
 				i++;
 			}
 		}
@@ -141,9 +143,29 @@ int main() {
 		system(start_read.c_str());
 	}
 #endif // ZADACHA_2
+
+#ifdef INTERSNAYA_SHTUKA
+	WCHAR text[] = { L"Hi, mother**ers! I'm here! абракадабра ёпта" };
+	srand(time(0));
+
+	STARTUPINFOW si = { 0 };
+	PROCESS_INFORMATION pi = { 0 };
+	CreateProcessW(L"c:\\windows\\notepad.exe", NULL, 0, 0, 0, 0, 0, 0, &si, &pi);
+
+	Sleep(rand() % 1000);
+
+	HWND hNotepad = FindWindowW(L"Notepad", 0);
+	HWND edit = FindWindowExW(hNotepad, 0, L"Edit", 0);
+
+	int len = wcslen(text);
+	for (int i = 0; i < len; i++)
+	{
+		Sleep(rand() % 100);
+		SendMessageW(edit, WM_CHAR, (WPARAM)text[i], 0);
+	}
+#endif // INTERSNAYA_SHTUKA
+
 }
-
-
 
 /*
 Работа с файлами
@@ -163,7 +185,5 @@ fin явл обьектом класса ifstream
 При создании файлового потока его обязательно привяз к файлу и тогда поток открывается.
 Через открытый поток можно читать либо писать файл но после того как все операции над файлом закончены его обязательно нужно закрыть
 
-
 функция system позволяет вызвать любую команду командной строки windows
-
 */
