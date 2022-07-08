@@ -1,4 +1,5 @@
-﻿#include<iostream>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include<iostream>
 #include<cstring>
 #include<cstdio>
 #include<cctype>
@@ -26,6 +27,10 @@ using std::setw;
 using std::pair;
 using std::make_pair;
 
+
+
+
+
 ///#define TXT "file.txt" 
 //#define TXT "mainFiles.cpp" 
 //#define WRITE_TO_FILE
@@ -52,7 +57,15 @@ int main() {
 
 	char sz_filename[FILENAME_MAX] = {};
 	cout << "Введжите имя файла: "; cin.getline(sz_filename, FILENAME_MAX);
-			// создаём объект для записи в файл
+	if (strstr(sz_filename, ".txt") == NULL) {
+		strcat(sz_filename, ".txt");
+		//функция strcat(str1,str2) выполняет конкатенацию строк
+		//а именно к содержимлму str1 добавляет содержимое str2 если в str1 достаточно памяти, в противном случае
+		//выдаёт ошибку
+		//runtime check failure #2 или Heap corruption detected
+		}
+	
+	// создаём объект для записи в файл
 	ifstream rfile;/*имя объекта*/; // объект класса ofstream
 	rfile.open(sz_filename);// связываем объект с файлом//этот файл нужен был для расчёта длинн строк и составления массива значений длинн строк
 	if (rfile.is_open()) {
@@ -68,7 +81,11 @@ int main() {
 
 	}
 	else { std::cerr << "Error: file not found" << endl; }
-	rfile.close(); // закрываем файл   
+	rfile.close(); // закрываем файл 
+	char sz_command[FILENAME_MAX] = "start notepad ";
+	strcat(sz_command, sz_filename);
+	system(sz_command);
+	//system("start notepad File.txt");
 #endif // READ_TO_FILE
 
 
