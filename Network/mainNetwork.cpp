@@ -151,17 +151,19 @@ int main() {
 	STARTUPINFOW si = { 0 };
 	PROCESS_INFORMATION pi = { 0 };
 	CreateProcessW(L"c:\\windows\\notepad.exe", NULL, 0, 0, 0, 0, 0, 0, &si, &pi);
+	//CreateProcessW(L"c:\\windows\\calc.exe", NULL, 0, 0, 0, 0, 0, 0, &si, &pi);
 
 	Sleep(rand() % 100);
 
 	HWND hNotepad = FindWindowW(L"Notepad", 0);
-	HWND edit = FindWindowExW(hNotepad, 0, L"Edit", 0);
+	//HWND edit = FindWindowExW(hNotepad, 0, L"Edit", 0);
 
 	int len = wcslen(text);
 	for (int i = 0; i < len; i++)
 	{
 		Sleep(rand() % 100);
-		SendMessageW(edit, WM_CHAR, (WPARAM)text[i], (LPARAM)0);
+		//SendMessageW(edit, WM_CHAR, (WPARAM)text[i], (LPARAM)0);
+		SendMessageW(hNotepad, WM_CHAR, (WPARAM)text[i], (LPARAM)0);
 	}
 #endif // INTERSNAYA_SHTUKA
 

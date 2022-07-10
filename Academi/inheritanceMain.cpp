@@ -1,4 +1,7 @@
 ﻿#include<iostream>
+#include<string>
+#include<fstream>
+
 using namespace std;
 
 #define  HUMAN_PARAMETRES const std::string& last_name, const std::string& first_name, unsigned int age
@@ -31,11 +34,20 @@ public:
 		
 		cout << last_name << " " << first_name <<" "<< age <<" Year's  "<< endl;
 	}
-	virtual std::ostream& print(std::ostream& os = cout)const {
+	/*virtual std::ostream& print(std::ostream& os = cout)const {
 		return os << last_name << " " << first_name << " " << age;
+	}*/
+
+	virtual std::ostream& print(std::ostream& os = cout)const {
+		os.width(20);
+		os << std::left;
+		os<<last_name;
+		os.width(15);
+		os<<first_name;
+		os.width(15);
+		os<<age;
+		return(os);
 	}
-
-
 };
 
 std::ostream& operator<<(std::ostream& os, const Human& obj) {
@@ -84,7 +96,20 @@ public:
 	}
 
 	std::ostream& print(std::ostream& os)const {
-		return Human::print(os) << " " << speciality << " " << group << " " << year << " " << rating << " " << attendance;
+		//return Human::print(os) << " " << speciality << " " << group << " " << year << " " << rating << " " << attendance;
+	
+		Human::print(os);
+		os.width(15);
+		os << speciality;
+		os.width(8);
+		os << group;
+		os.width(3);
+		os << year;
+		os.width(8);
+		os << rating;
+		os.width(8);
+		os << attendance;
+		return(os);
 	}
 
 };
@@ -116,8 +141,18 @@ public:
 	}
 
 	std::ostream& print(std::ostream& os)const {
-		return Human::print(os) << " " << speciality << " " << experience;
+		////return Human::print(os) << " " << speciality << " " << experience;
+		Human::print(os);
+		os.width(15);
+		os << speciality;
+		os.width(5);
+		os << experience;
+		return(os);
 	}
+
+
+
+
 };
 
 
@@ -173,6 +208,9 @@ int main() {
 		new Graduate("Shrader", "Hank", 40, "criminalist", "ps_220", 12, 13, 14,"abrakadabra"),
 		new Student("fedya", "fortochkin", 25,"xzs", "pps", 12,140, 99)
 	};
+
+	std::ofstream fout("Academy.txt");
+	
 	/*for (int i = 0; i < sizeof(group)/sizeof(group[0]); i++) {
 
 		group[i]->info();
@@ -181,20 +219,22 @@ int main() {
 
 		delete group[i];
 	}*/
-	//for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
-	//	cout << typeid(*group[i]).name() << endl;
-	//	cout << *group[i] << "  ";
-	//	//cout<<*group[i]<<endl;
-	//}
 	for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
-			//cout << typeid(*group[i]).name() << endl;
-			//cout << *group[i] << "  ";
+		//cout << typeid(*group[i]).name() << endl;
+		cout << *group[i] << endl;
+		fout << *group[i] << endl;
+		//cout<<*group[i]<<endl;
+	}
+	fout.close();
+	//for (int i = 0; i < sizeof(group) / sizeof(group[0]); i++) {
+	//		//cout << typeid(*group[i]).name() << endl;
+	//		//cout << *group[i] << "  ";
 
-			group[i]->print();
+	//		group[i]->print();
 
-			cout << endl << "__________________________________________________________________" << endl;
-			//cout<<*group[i]<<endl;
+	//		cout << endl << "__________________________________________________________________" << endl;
+	//		//cout<<*group[i]<<endl;
 
-		}
+	//	}
 
 }
