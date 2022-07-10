@@ -184,8 +184,6 @@ public:
 		//ifs >> last_name >> first_name >> age;
 		//return(ifs);
 	}
-
-
 };
 
 #define  TEACHER_PARAMETRES const std::string& speciality,  unsigned int experience
@@ -286,7 +284,6 @@ public:
 		//ifs >> last_name >> first_name >> age;
 		//return(ifs);
 	}
-
 };
 
 Human** load(const char filename[], int& n) {
@@ -306,14 +303,11 @@ Human** load(const char filename[], int& n) {
 			std::getline(wfile, buffer, ':');
 			group[i]= HummanFactory(buffer);
 			if (group[i])wfile >> *group[i];
-
 		}
-
 		wfile.close();
 	}
 	else { std::cerr << "Erroor: file not found " << endl; }
 	return group;
-
 }
 
 Human* HummanFactory(const std::string type) {
@@ -324,7 +318,6 @@ Human* HummanFactory(const std::string type) {
 	if (type.find("class Graduate") != std::string::npos)
 		return new Graduate("", "", 0, "", "", 0, 0, 0, "");
 	return nullptr;
-
 }
 
 //#define INHERITANCE_CHECK
@@ -386,15 +379,9 @@ int main() {
 
 	int n = 0;
 	Human** grup = load("Academy.txt", n);
-
-		for(int i = 0; i < n; i++) {
-			cout << *grup[i] << endl;
+		for(int i = 0; i < n; i++) {cout << *grup[i] << endl;
 		}
-		for(int i = 0; i < n; i++) {
-			delete grup[i];
+		for(int i = 0; i < n; i++) {delete grup[i];
 		}
 		delete[] grup;
-	
-
-
 }
