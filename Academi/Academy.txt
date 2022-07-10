@@ -1,4 +1,4 @@
-Montanasd           Antonioawer    25             ds             ps      12 13      14      
-Vasya               Pupkin         25             xz             12   
-Shrader             Hank           40             criminalist    ps_220  12 13      14       abrakadabra
-fedya               fortochkin     25             xzs            pps     12 140     99      
+class Student:  Montanasd           Antonioawer    25             ds                       ps      12 13      14      
+class Teacher:  Vasya               Pupkin         25             xz                       12   
+class Graduate: Shrader             Hank           40             criminalist              ps_220  12 13      14       abrakadabra
+class Student:  fedya               fortochkin     25             xzs                      pps     12 140     99      
