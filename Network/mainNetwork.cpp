@@ -34,8 +34,8 @@ using std::make_pair;
 //https://github.com/okovtun/PV_011/blob/master/STL/Files/Task/201.dhcpd
 
 //#define ZADACHA_1 
-#define ZADACHA_2 
-//#define INTERSNAYA_SHTUKA 
+//#define ZADACHA_2 
+#define INTERSNAYA_SHTUKA 
 
 int main() {
 	setlocale(LC_ALL, "");
@@ -152,7 +152,7 @@ int main() {
 	PROCESS_INFORMATION pi = { 0 };
 	CreateProcessW(L"c:\\windows\\notepad.exe", NULL, 0, 0, 0, 0, 0, 0, &si, &pi);
 
-	Sleep(rand() % 1000);
+	Sleep(rand() % 100);
 
 	HWND hNotepad = FindWindowW(L"Notepad", 0);
 	HWND edit = FindWindowExW(hNotepad, 0, L"Edit", 0);
@@ -161,7 +161,7 @@ int main() {
 	for (int i = 0; i < len; i++)
 	{
 		Sleep(rand() % 100);
-		SendMessageW(edit, WM_CHAR, (WPARAM)text[i], 0);
+		SendMessageW(edit, WM_CHAR, (WPARAM)text[i], (LPARAM)0);
 	}
 #endif // INTERSNAYA_SHTUKA
 
